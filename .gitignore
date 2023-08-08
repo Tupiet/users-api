@@ -1,0 +1,9 @@
+.DS_Store
+.env
+
+package-lock.json
+prisma/dev.db
+
+node_modules
+dist
+prisma/migrations
