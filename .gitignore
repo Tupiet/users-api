@@ -6,4 +6,3 @@ prisma/dev.db
 
 node_modules
 dist
-prisma/migrations

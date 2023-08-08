@@ -14,11 +14,21 @@ const User = z.object({
     age: z.number()
 })
 
+/**
+ * GET
+ * Returns all the users, only with the id, firstname and lastname.
+ */
 router.get('/', async (req, res) => {
-    const users = await prisma.user.findMany()
+    const users = await prisma.user.findMany({ 
+        select: { id: true, firstname: true, lastname: true } 
+    })
     res.json(users)
 })
 
+/**
+ * GET
+ * Returns the user with the specified id, with all the data.
+ */
 router.get('/:id', async (req, res) => {
     try {
         const id = +req.params.id
@@ -31,6 +41,10 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+/**
+ * POST
+ * Creates an user with the provided data.
+ */
 router.post('/', async (req, res) => {
     const body: Prisma.UserCreateInput = req.body
 
@@ -50,6 +64,11 @@ router.post('/', async (req, res) => {
     }
 })
 
+/**
+ * PUT
+ * Updates the data of the user with the specified id. 
+ * You can send all the data, or only the needed.
+ */
 router.put('/:id', async (req, res) => {
     try {
         const id = +req.params.id
@@ -69,6 +88,10 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+/**
+ * DELETE
+ * Delete the user with the specified id.
+ */
 router.delete('/:id', async (req, res) => {
     try {
         const id = +req.params.id
