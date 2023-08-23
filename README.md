@@ -12,7 +12,7 @@ git clone https://github.com/Tupiet/users-api.git
 cd users-api
 cp .env.example .env
 npm i
-npx db push
+npx prisma db push
 npm run watch
 npm run dev
 ```
